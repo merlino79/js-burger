@@ -16,6 +16,8 @@
 
 var priceEl = document.getElementById('price'); //primo
 var nameUser = document.getElementById('name');
+var ingredients = document.getElementsByClassName("ingredient-checkbox");
+console.log(ingredients); //vedo dalla console html collection ho visto la conferma nella consol.log (checked se true o folse)
 
 
 
@@ -24,8 +26,11 @@ var nameUser = document.getElementById('name');
 
 
 //settings//
-var defaultPrice = 5; //parto con il definire il prezzo di partenza del mio panino //primo
+var defaultPrice = 5; //parto con il definire il prezzo di partenza del mio panino //inizio 
 writePrice(defaultPrice, priceEl); // la conferma della stampa
+
+
+
 
 
 
@@ -38,10 +43,29 @@ writePrice(defaultPrice, priceEl); // la conferma della stampa
 
 button.addEventListener('click', function() {
 
+
+    //salvo il valore del nome user dentro la variabile
+    var nomeInserito = nameUser.value.trim(); //.trim serverve per pulire gli spazi prima e dopo
+    //console.log(nomeInserito.length);
+
     //controllo del nome
-    console.log(nameUser.value); //contollo del nome inserito nella consol.log
-    //sommare gli elementi check
-    //verificare la presenza del coupon e nel caso applicare lo sconto
+    //console.log(nameUser.value.length); //contollo del nome inserito nella consol.log
+
+    if (nomeInserito.length === 0) {
+        alert("inserisci il none del panino perfavore : ")
+    } else {
+        for (var i = 0; i < ingredients.length; i++) {
+            var ingredient = ingredients[i]; //console.log(ingredient); //(per la verifica da consol.log se e clicclato è true)
+            if (ingredient.checked === true) {
+                console.log(ingredient.value);
+                defaultPrice += parseInt(ingredient.value);
+                console.log(defaultPrice);
+            }
+
+        }
+    }
+    //ciclo e somma gli elementi check
+    //verificare la presenza del coupon e nel caso applico lo sconto
 
 });
 
@@ -69,3 +93,11 @@ function writePrice(value, target) {
 //primo passaggio la stampa del prezzo base
 
 // secondo : bottone
+
+// ciclo  gli ingedienti con il for controllo la consol.log per verificare e creo la elseif(alrta condione)
+
+
+//ma prima con .classNAme guardo nell'html  ingredient check-box (sono tutti gli elementi(come se fosse un array))
+
+
+//somma dei numeri del check
