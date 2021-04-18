@@ -79,6 +79,9 @@ button.addEventListener('click', function() {
         var totalPrice = defaultPrice + priceIngredient;
         if (coupons.includes(coupon.value) === true) {
             console.log('sconto');
+            totalPrice -= totalPrice * discount
+        } else {
+            console.log('non hai diritto allo sconto')
         }
         writePrice(totalPrice, priceEl);
 
