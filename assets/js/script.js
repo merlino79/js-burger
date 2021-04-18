@@ -54,15 +54,18 @@ button.addEventListener('click', function() {
     if (nomeInserito.length === 0) {
         alert("inserisci il none del panino perfavore : ")
     } else {
+        var priceIngredient = 0;
+
         for (var i = 0; i < ingredients.length; i++) {
             var ingredient = ingredients[i]; //console.log(ingredient); //(per la verifica da consol.log se e clicclato è true)
             if (ingredient.checked === true) {
-                console.log(ingredient.value);
-                defaultPrice += parseInt(ingredient.value);
-                console.log(defaultPrice);
+                //console.log(ingredient.value);
+
+                priceIngredient += parseInt(ingredient.value);
             }
 
         }
+        writePrice((defaultPrice + priceIngredient), priceEl);
     }
     //ciclo e somma gli elementi check
     //verificare la presenza del coupon e nel caso applico lo sconto
