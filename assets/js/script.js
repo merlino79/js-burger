@@ -17,6 +17,8 @@
 var priceEl = document.getElementById('price'); //primo
 var nameUser = document.getElementById('name');
 var ingredients = document.getElementsByClassName("ingredient-checkbox");
+var coupon = document.getElementById('coupon');
+console.log(coupon); //sono andato a vedere nella console dove trovo la scritta che inserisco nel discauntcoupon
 console.log(ingredients); //vedo dalla console html collection ho visto la conferma nella consol.log (checked se true o folse)
 
 
@@ -27,7 +29,13 @@ console.log(ingredients); //vedo dalla console html collection ho visto la confe
 
 //settings//
 var defaultPrice = 5; //parto con il definire il prezzo di partenza del mio panino //inizio 
+
+// var coupon per sconto ed inserico i nomi dello sconto
+var coupons = ['sconto2021', 'sconto-bool'];
+
 writePrice(defaultPrice, priceEl); // la conferma della stampa
+
+var discount = 0.2; //indico il 20% di sconto
 
 
 
@@ -65,10 +73,17 @@ button.addEventListener('click', function() {
             }
 
         }
-        writePrice((defaultPrice + priceIngredient), priceEl);
+
+        //ciclo e somma gli elementi check
+        //verificare la presenza del coupon e nel caso applico lo sconto
+        var totalPrice = defaultPrice + priceIngredient;
+        if (coupons.includes(coupon.value) === true) {
+            console.log('sconto');
+        }
+        writePrice(totalPrice, priceEl);
+
     }
-    //ciclo e somma gli elementi check
-    //verificare la presenza del coupon e nel caso applico lo sconto
+
 
 });
 
